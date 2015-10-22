@@ -1,6 +1,6 @@
-package test.services;
+package org.kitri.app.services;
 
-import test.interfaces.Service;
+import org.kitri.app.interfaces.Service;
 
 /**
  * 홈페이지 서비스

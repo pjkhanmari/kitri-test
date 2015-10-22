@@ -1,16 +1,16 @@
-package test.resources;
+package org.kitri.app.resources;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import test.beans.User;
-import test.interfaces.Repository;
+import org.kitri.app.beans.User;
+import org.kitri.app.interfaces.Repository;
 
 public class TestRepository extends Repository{
 	
 	public Map<String,User> users; // id, user 
-	private TestRepository() {
-		super.setRepository(this);
+	public TestRepository() {
+		super();
 		users = new HashMap<String, User>();
 	}
 	

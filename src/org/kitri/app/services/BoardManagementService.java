@@ -1,6 +1,6 @@
-package test.services;
+package org.kitri.app.services;
 
-import test.interfaces.Service;
+import org.kitri.app.interfaces.Service;
 
 /**
  * 게시판 관리 서비스

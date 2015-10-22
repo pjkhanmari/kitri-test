@@ -1,3 +1,4 @@
+package org.kitri.app.resources;
 //package test.resources;
 //
 //import test.beans.User;

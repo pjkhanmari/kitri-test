@@ -1,6 +1,6 @@
-package test.interfaces;
+package org.kitri.app.interfaces;
 
-import test.beans.User;
+import org.kitri.app.beans.User;
 
 public interface UserRepository {
 	void insertUser(User user);

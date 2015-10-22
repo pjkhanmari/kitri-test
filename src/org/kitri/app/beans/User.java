@@ -1,4 +1,4 @@
-package test.beans;
+package org.kitri.app.beans;
 
 public class User {
 
