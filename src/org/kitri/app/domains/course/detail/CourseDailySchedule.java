@@ -4,8 +4,8 @@ package org.kitri.app.domains.course.detail;
  * @author 김희택
  *
  */
-public class CourseDailyScheduleNode {
-	public CourseDailyScheduleNode() {}
+public class CourseDailySchedule {
+	public CourseDailySchedule() {}
 	int lectureTimes; // 몇 교시가 배정되는가
 	String teacherNames[]; // 1교시부터 N교시까지 강사 이름
 	String lectureTitle[]; // 수업 이름

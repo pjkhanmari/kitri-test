@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.kitri.app.domains.benefits.AttendanceSheet;
 import org.kitri.app.domains.benefits.StudentBenefitSheet;
 import org.kitri.app.domains.benefits.TeacherBenefitSheet;
 import org.kitri.app.domains.course.Course;
+import org.kitri.app.domains.course.detail.CourseDailyNote;
+import org.kitri.app.domains.course.detail.CourseDailySchedule;
 import org.kitri.app.domains.course.detail.CourseScheduleSheet;
-import org.kitri.app.domains.dailynote.DailyNote;
 import org.kitri.app.domains.finance.FinanceDetail;
 import org.kitri.app.domains.users.Employee;
 import org.kitri.app.domains.users.Student;
@@ -25,13 +27,45 @@ public class TestRepositoryImpl extends Repository{
 	static{
 		users = new HashMap<String, User>();
 		courses = new HashMap<String, Course>();
+		// add course
+		Course course = new Course();
+		course.setTitle("빅데이터 응용시스템 1기");
+		course.setId("100");
+		// add course schedule
+		CourseScheduleSheet sheet = new CourseScheduleSheet(course.getId());
+		ArrayList<CourseDailySchedule> dailySchedule = new ArrayList<CourseDailySchedule>();
+		for(int i=0; i<30; i++){ // 30일 수업
+			CourseDailySchedule temp = new CourseDailySchedule();
+			String[] lectureTitle = new String[8];
+			String[] lectureDescription = new String[8];
+			for(int j=0; j<8; j++){ // 8교시까지
+				temp.setLectureTimes(8); // 8교시
+				lectureTitle[i] = "자바";
+				lectureDescription[i] = i+1 + "번째 자바 강의 ";
+			}
+			temp.setLectureTitle(lectureTitle);
+			temp.setLectureDescription(lectureDescription);
+		}
+		sheet.setDailySchedule(dailySchedule);
+		course.setCourseScheduleSheet(sheet);
+		
+		ArrayList<CourseDailyNote> notes = new ArrayList<CourseDailyNote>();
+		for(int i=0; i<10; i++){
+			CourseDailyNote courseDailyNote = new CourseDailyNote();
+			courseDailyNote.setDescription("blah blah .... ");
+			courseDailyNote.setWriten(new Date(System.currentTimeMillis()));
+			notes.add(courseDailyNote);
+		}
+		course.setCourseDailyNote(notes);
+		//
+		
 	}
 	public TestRepositoryImpl() {
 		super();
 	}
 	
 	/**
-	 * UserRepository
+	 * IUserRepository
 	 */
 	@Override
 	public void insertUser(User user) throws Exception{
@@ -40,7 +74,7 @@ public class TestRepositoryImpl extends Repository{
 		else users.put(user.getId(), new User(user.getId(), user.getPw()));
 	}
 	/**
-	 * UserRepository
+	 * IUserRepository
 	 */
 	@Override
 	public User selectUser(String id, String pw) {
@@ -50,7 +84,7 @@ public class TestRepositoryImpl extends Repository{
 		else return null;
 	}
 	/**
-	 * UserRepository
+	 * IUserRepository
 	 */
 	@Override
 	public void updateUser(User user) throws Exception{
@@ -64,7 +98,7 @@ public class TestRepositoryImpl extends Repository{
 	}
 
 	/**
-	 * AuthorizationRepository
+	 * IAuthorizationRepository
 	 */
 	@Override
 	public Employee addAuth(String id, int auth) throws Exception{
@@ -80,7 +114,7 @@ public class TestRepositoryImpl extends Repository{
 	}
 	
 	/**
-	 * AuthorizationRepository
+	 * IAuthorizationRepository
 	 */
 	@Override
 	public int selectAuth(String id) throws Exception {
@@ -94,7 +128,7 @@ public class TestRepositoryImpl extends Repository{
 	}
 
 	/**
-	 * AuthorizationRepository
+	 * IAuthorizationRepository
 	 */
 	@Override
 	public Employee removeAuth(String id, int auth) throws Exception {
@@ -110,47 +144,66 @@ public class TestRepositoryImpl extends Repository{
 	}
 
 	/**
-	 * CourseScheduleRepository
+	 * ICourseScheduleRepository
+	 * @throws Exception 
 	 */
 	@Override
-	public CourseScheduleSheet selectCourseSchedule(String courseId) {
-		// TODO Auto-generated method stub
-		return null;
+	public CourseScheduleSheet selectCourseSchedule(String courseId) throws Exception {
+		Course course = courses.get(courseId);
+		if(course == null)
+			throw new Exception(ExceptionMessages.COURSE_NOT_EXISTS);
+		return course.getSchedule();
 	}
 
 	/**
-	 * CourseScheduleRepository
+	 * ICourseScheduleRepository
+	 * @throws Exception 
 	 */
 	@Override
-	public void insertCourseSchedule(String courseId) {
-		// TODO Auto-generated method stub
-		
+	public void insertCourseSchedule(String courseId, CourseScheduleSheet scheduleSheet) throws Exception {
+		Course course = courses.get(courseId);
+		if(course == null)
+			throw new Exception(ExceptionMessages.COURSE_NOT_EXISTS);
+		course.setCourseScheduleSheet(scheduleSheet);
 	}
 
 	/**
 	 * 
-	 * CourseDailyNoteRepository
+	 * ICourseDailyNoteRepository
+	 * @throws Exception 
 	 */
 	@Override
-	public ArrayList<DailyNote> selectDailyNotes(String courseId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<CourseDailyNote> selectCourseDailyNotes(String courseId) throws Exception {
+		Course course = courses.get(courseId);
+		if(course == null)
+			throw new Exception(ExceptionMessages.COURSE_NOT_EXISTS);
+		return course.getCourseDailyNote();
+	}
+
+	/**
+	 * ICourseDailyNoteRepository
+	 * Test시에는 날짜 계산을 아래와 같이 했다.하지만
+	 * DB로 구현할 때에는 query를 통해서 간단하게 구현
+	 * @throws Exception 
+	 */
+	@Override
+	public CourseDailyNote selectCourseDailyNote(String courseId, Date date) throws Exception {
+		Course course = courses.get(courseId);
+		if(course == null)
+			throw new Exception(ExceptionMessages.COURSE_NOT_EXISTS);
+		ArrayList<CourseDailyNote> courseDailyNote = course.getCourseDailyNote();
+		long diff = date.getTime() - courseDailyNote.get(0).getWriten().getTime();
+		long days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+		if(days <0 || days >= courseDailyNote.size())
+			throw new Exception(ExceptionMessages.DATE_OUT_OF_RANGE);
+		return courseDailyNote.get((int)days);
 	}
 
 	/**
 	 * ICourseDailyNoteRepository
 	 */
 	@Override
-	public DailyNote selectDailyNote(String courseId, Date date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * ICourseDailyNoteRepository
-	 */
-	@Override
-	public void insertDailyNotes(String courseId, Date date) {
+	public void insertCourseDailyNotes(String courseId, Date date) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -159,7 +212,7 @@ public class TestRepositoryImpl extends Repository{
 	 * ICourseDailyNoteRepository
 	 */
 	@Override
-	public void updateDailyNotes(String courseId, Date date) {
+	public void updateCourseDailyNotes(String courseId, Date date) {
 		// TODO Auto-generated method stub
 		
 	}

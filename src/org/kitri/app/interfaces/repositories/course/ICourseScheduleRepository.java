@@ -8,6 +8,6 @@ import org.kitri.app.domains.course.detail.CourseScheduleSheet;
  *
  */
 public interface ICourseScheduleRepository {
-	public CourseScheduleSheet selectCourseSchedule(String courseId);
-	public void insertCourseSchedule(String courseId);
+	public CourseScheduleSheet selectCourseSchedule(String courseId) throws Exception;
+	public void insertCourseSchedule(String courseId, CourseScheduleSheet scheduleSheet) throws Exception;
 }

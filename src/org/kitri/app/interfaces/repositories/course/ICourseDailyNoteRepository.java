@@ -3,7 +3,7 @@ package org.kitri.app.interfaces.repositories.course;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.kitri.app.domains.dailynote.DailyNote;
+import org.kitri.app.domains.course.detail.CourseDailyNote;
 
 /**
  * 과정 일지
@@ -11,8 +11,8 @@ import org.kitri.app.domains.dailynote.DailyNote;
  *
  */
 public interface ICourseDailyNoteRepository {
-	public ArrayList<DailyNote> selectDailyNotes(String courseId);
-	public DailyNote selectDailyNote(String courseId, Date date);
-	public void insertDailyNotes(String courseId, Date date);
-	public void updateDailyNotes(String courseId, Date date);
+	public ArrayList<CourseDailyNote> selectCourseDailyNotes(String courseId) throws Exception;
+	public CourseDailyNote selectCourseDailyNote(String courseId, Date date) throws Exception;
+	public void insertCourseDailyNotes(String courseId, Date date);
+	public void updateCourseDailyNotes(String courseId, Date date);
 }
