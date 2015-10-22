@@ -6,10 +6,10 @@ import org.kitri.app.domains.users.Student;
 
 /**
  * 과정 관련 인원
- * @author kitri
+ * @author 김희택
  *
  */
-public interface CourseMemberRepositoryInterface {
+public interface ICourseMemberRepository {
 	public void addCourseMemberStudent(String courseId, Student student);
 	public void addCourseMemberStudents(String courseId, Student student[]);
 	public void removeCourseMemberStudent(String courseId, String studentId);

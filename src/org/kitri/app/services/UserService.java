@@ -6,7 +6,7 @@ import org.kitri.app.interfaces.Service;
 
 /**
  * 사용자 정보 관리
- * @author kitri
+ * @author 김희택
  *
  */
 public class UserService extends Service{

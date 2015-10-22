@@ -1,10 +1,10 @@
 package org.kitri.app.interfaces;
 
-import org.kitri.app.interfaces.repositories.AuthorizationRepositoryInterface;
-import org.kitri.app.interfaces.repositories.CourseInfoRepositoryInterface;
-import org.kitri.app.interfaces.repositories.UserRepositoryInterface;
+import org.kitri.app.interfaces.repositories.IAuthorizationRepository;
+import org.kitri.app.interfaces.repositories.ICourseInfoRepository;
+import org.kitri.app.interfaces.repositories.IUserRepository;
 
-public abstract class Repository implements UserRepositoryInterface, AuthorizationRepositoryInterface, CourseInfoRepositoryInterface {
+public abstract class Repository implements IUserRepository, IAuthorizationRepository, ICourseInfoRepository {
 	private static Repository instance = null;
 	public static Repository getInstance() {
 		return instance;

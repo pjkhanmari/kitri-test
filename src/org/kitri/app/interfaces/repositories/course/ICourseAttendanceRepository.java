@@ -4,10 +4,10 @@ import org.kitri.app.domains.benefits.AttendanceSheet;
 
 /**
  * 과정 출결
- * @author kitri
+ * @author 김희택
  *
  */
-public interface CourseAttendanceRepositoryInterface {
+public interface ICourseAttendanceRepository {
 	public AttendanceSheet selectStudentAttendanceSheet(String courseId);
 	public void updateStudentAttendanceSheet(String courseId, AttendanceSheet sheet);
 }

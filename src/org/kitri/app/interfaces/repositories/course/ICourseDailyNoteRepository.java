@@ -7,10 +7,10 @@ import org.kitri.app.domains.dailynote.DailyNote;
 
 /**
  * 과정 일지
- * @author kitri
+ * @author 김희택
  *
  */
-public interface CourseDailyNoteRepositoryInterface {
+public interface ICourseDailyNoteRepository {
 	public ArrayList<DailyNote> selectDailyNotes(String courseId);
 	public DailyNote selectDailyNote(String courseId, Date date);
 	public void insertDailyNotes(String courseId, Date date);

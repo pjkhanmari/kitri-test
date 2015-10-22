@@ -6,10 +6,10 @@ import org.kitri.app.domains.finance.FinanceDetail;
 
 /**
  * 과정 재무
- * @author kitri
+ * @author 김희택
  *
  */
-public interface CourseFinanceRepositoryInterface {
+public interface ICourseFinanceRepository {
 	public void addFinance(String courseid, FinanceDetail financeDetail);
 	public void removeFinance(String courseid, String financeId);
 	public ArrayList<FinanceDetail> selectFinanceLists(String courseId);

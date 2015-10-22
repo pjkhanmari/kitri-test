@@ -6,7 +6,7 @@ import org.kitri.app.interfaces.Repository;
 
 /**
  * 사용자 정보
- * @author kitri
+ * @author 김희택
  *
  */
 public class UserDao extends Dao{

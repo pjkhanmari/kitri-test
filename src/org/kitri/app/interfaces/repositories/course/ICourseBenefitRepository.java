@@ -7,12 +7,12 @@ import org.kitri.app.domains.benefits.TeacherBenefitSheet;
 
 /**
  * 과정 수당 및 산출식
- * @author kitri
+ * @author 김희택
  *
  * sheet에 수당, 산출식 포함
  *
  */
-public interface CourseBenefitRepositoryInterface {
+public interface ICourseBenefitRepository {
 	public ArrayList<StudentBenefitSheet> selectStudentsBenefitSheet(String courseId);
 	public ArrayList<TeacherBenefitSheet> selectTeachersBenefitSheet(String courseId);
 	public StudentBenefitSheet selectStudentBenefitSheet(String courseId);

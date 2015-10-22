@@ -8,7 +8,7 @@ import org.kitri.app.message.ExceptionMessages;
 
 /**
  * 권한 관리 서비스
- * @author kitri
+ * @author 김희택
  *
  */
 public class AuthorizationService extends Service{
