@@ -1,6 +1,6 @@
 package org.kitri.app.interfaces.repositories;
 
-import org.kitri.app.domains.Employee;
+import org.kitri.app.domains.users.Employee;
 
 public interface AuthorizationRepositoryInterface {
 	Employee addAuth(String id, int auth) throws Exception;

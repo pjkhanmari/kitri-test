@@ -4,15 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.kitri.app.domains.User;
-import org.kitri.app.interfaces.RepositoryInterface;
+import org.kitri.app.domains.users.User;
+import org.kitri.app.interfaces.Repository;
 import org.kitri.app.resources.TestRepositoryImpl;
 import org.kitri.app.services.UserService;
 
 public class AppTest {
 	@Before
 	public void before() throws InstantiationException, IllegalAccessException{
-		RepositoryInterface.setRepository(TestRepositoryImpl.class);
+		Repository.setRepository(TestRepositoryImpl.class);
 	}
 	
 	@Test

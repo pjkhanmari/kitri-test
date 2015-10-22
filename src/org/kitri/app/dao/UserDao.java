@@ -1,8 +1,8 @@
 package org.kitri.app.dao;
 
-import org.kitri.app.domains.User;
+import org.kitri.app.domains.users.User;
 import org.kitri.app.interfaces.Dao;
-import org.kitri.app.interfaces.RepositoryInterface;
+import org.kitri.app.interfaces.Repository;
 
 /**
  * 사용자 정보
@@ -10,9 +10,9 @@ import org.kitri.app.interfaces.RepositoryInterface;
  *
  */
 public class UserDao extends Dao{
-	RepositoryInterface rep = null;
+	Repository rep = null;
 	public UserDao() {
-		rep = RepositoryInterface.getInstance();
+		rep = Repository.getInstance();
 	}
 	
 	public User selectUser(User user){

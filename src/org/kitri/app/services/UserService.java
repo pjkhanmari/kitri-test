@@ -1,7 +1,7 @@
 package org.kitri.app.services;
 
 import org.kitri.app.dao.UserDao;
-import org.kitri.app.domains.User;
+import org.kitri.app.domains.users.User;
 import org.kitri.app.interfaces.Service;
 
 /**

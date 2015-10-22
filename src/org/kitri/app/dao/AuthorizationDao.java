@@ -1,12 +1,12 @@
 package org.kitri.app.dao;
 
 import org.kitri.app.interfaces.Dao;
-import org.kitri.app.interfaces.RepositoryInterface;
+import org.kitri.app.interfaces.Repository;
 
 public class AuthorizationDao extends Dao{
-	RepositoryInterface rep;
+	Repository rep;
 	public AuthorizationDao() {
-		rep = RepositoryInterface.getInstance();
+		rep = Repository.getInstance();
 	}
 	
 }

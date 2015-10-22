@@ -1,4 +1,4 @@
-package org.kitri.app.domains;
+package org.kitri.app.domains.users;
 
 
 public class Employee extends User {

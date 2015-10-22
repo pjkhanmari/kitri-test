@@ -1,6 +1,6 @@
 package org.kitri.app.interfaces.repositories;
 
-import org.kitri.app.domains.User;
+import org.kitri.app.domains.users.User;
 
 public interface UserRepositoryInterface {
 	void insertUser(User user) throws Exception;
