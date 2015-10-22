@@ -1,5 +1,5 @@
 package org.kitri.app.interfaces;
 
-public interface Dao {
+public abstract class Dao {
 
 }
