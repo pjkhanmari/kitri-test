@@ -1,0 +1,14 @@
+package org.kitri.app.interfaces.repositories;
+
+import org.kitri.app.interfaces.repositories.course.CourseAttendanceRepositoryInterface;
+import org.kitri.app.interfaces.repositories.course.CourseBenefitRepositoryInterface;
+import org.kitri.app.interfaces.repositories.course.CourseDailyNoteRepositoryInterface;
+import org.kitri.app.interfaces.repositories.course.CourseFinanceRepositoryInterface;
+import org.kitri.app.interfaces.repositories.course.CourseMemberRepositoryInterface;
+import org.kitri.app.interfaces.repositories.course.CourseRepositoryInterface;
+import org.kitri.app.interfaces.repositories.course.CourseScheduleRepositoryInterface;
+
+public interface CourseInfoRepositoryInterface extends CourseRepositoryInterface, CourseScheduleRepositoryInterface,
+CourseDailyNoteRepositoryInterface, CourseBenefitRepositoryInterface, CourseMemberRepositoryInterface, CourseAttendanceRepositoryInterface, CourseFinanceRepositoryInterface{
+
+}
